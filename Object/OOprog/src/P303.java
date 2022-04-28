@@ -10,8 +10,7 @@ public class P303 {
         d.shuffle();
         Card c = d.pickUp();
         c.flip();
-        Rank tempRank = c.rank;
-        Suit tempSuit = c.suit;
+        int temp = c.getNumber();
         c.pause(3000);
         c.flip();
         d.add(c);
@@ -22,7 +21,7 @@ public class P303 {
             c2.flip();
             c2.moveTo(300,200);
             p.add(c2);
-            if (c2.rank == tempRank && c2.suit == tempSuit) {
+            if (c2.getNumber() == temp) {
                 break;
             }
         }
