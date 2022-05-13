@@ -53,11 +53,11 @@ public class Hand {
             c.moveTo(p);
             int j = count();
             int I = i;
-            while(i < j-1){
+            /*while(i < j-1){
                 cards[i] = cards[i+1];
                 cards[i].moveTo(x+i*deltaX,y);
                 i++;
-            }
+            }*/
             for(i = I;i < j;i++){
                 cards[i] = cards[i+1];
                 cards[i].moveTo(x+i*deltaX,y);
