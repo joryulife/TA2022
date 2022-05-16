@@ -1,5 +1,14 @@
 {
     "cSpell.words": [
-        "rcpy"
-    ]
+        "Fukuo",
+        "MAIKO",
+        "OHMI",
+        "prvword",
+        "rcpy",
+        "stringr",
+        "Takumi"
+    ],
+    "files.associations": {
+        "sstream": "c"
+    }
 }
