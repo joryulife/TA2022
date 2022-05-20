@@ -13,6 +13,7 @@ int main() {
     
     for (i = 0; i < 64; i++) {
         l = 0.1 * i;
+        printf("u = %f",u);
         while (1) {
             new_u = u - f(u, l) / df(u);
             if (fabs(new_u - u) < eps){

@@ -3,11 +3,15 @@
 
 /* 関数の宣言 */
 double a;
-double f(double x) { return x * x - atan(2.0 * x) - 1; }
-double df(double x) { return 2.0 * x - 2.0 / (1.0 + 4.0 * x * x); }
+double f(double x){ 
+    return x * x - atan(2.0 * x) - 1; 
+}
+double df(double x){ 
+    return 2.0 * x - 2.0 / (1.0 + 4.0 * x * x);
+}
 
 int main() {
-    double x, new_x, y, new_y;
+    double x, new_x;
     double eps = 1.0e-15;
     
     scanf("%lf", &x);
