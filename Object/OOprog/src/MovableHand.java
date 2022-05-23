@@ -1,5 +1,3 @@
-import jp.ac.ryukoku.math.cards.*;
-
 public class MovableHand extends SortedHand{
     
     MovableHand(int x,int y){
@@ -11,8 +9,12 @@ public class MovableHand extends SortedHand{
     }
 
     void relocate(int x,int y,int deltaX){
+        super.x = x;
+        super.y = y;
+        super.deltaX = deltaX;
         for(int i = 0;i < numCards;i++){
             cards[i].moveTo(x+deltaX*i, y);
+            cards[i].raise();
         }
     }
 }
