@@ -1,4 +1,3 @@
-
 import jp.ac.ryukoku.math.cards.*;
 
 /* Hand クラスのクラス宣言 */
@@ -24,6 +23,16 @@ class Hand {
         this.deltaX = deltaX;
     }
 
+    Hand(int x, int y, int deltaX,boolean open){
+        this(x, y, deltaX);
+        this.open = open; 
+    }
+
+    Hand(int x, int y,boolean open){
+        this(x,y);
+        this.open = open;
+    }
+
     static Hand[] createHands(int num, int x, int y, int dx, int shift) {
         Hand[] hands = new Hand[num];
         for (int i = 0; i < num; i++) {
@@ -33,20 +42,11 @@ class Hand {
         return hands;
     }
 
-    static void fillHands(Hand[] hands,Deck d){
-        for (int i = 0; i < Hand.CAPACITY; i++) {
+    static void fillHands(Hand[] hands, Deck d) {
+        for (int i = 0; i < CAPACITY; i++) {
             for (Hand h : hands) {
-                if(d.isEmpty()){
-                    break;
-                }
                 h.draw(d);
             }
-        }
-    }
-    
-    void fill(Deck d){
-        while (this.count() < Hand.CAPACITY) {
-            this.draw(d);
         }
     }
 
@@ -63,7 +63,15 @@ class Hand {
         if (!d.isEmpty() && numCards < CAPACITY) {
             Card c = d.pickUp();
             add(c);
-            c.faceUp();
+            if(this.open){
+                c.faceUp();
+            }
+        }
+    }
+
+    void fill(Deck d) {
+        while (!d.isEmpty() && numCards < CAPACITY) {
+            draw(d);
         }
     }
 
