@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 int main() {
-    long x;
+    int x;
 
-    scanf("%ld", &x);
+    scanf("%d", &x);
 
-    for(int i = 63; i >= 0; i--) {
-        printf("%ld", (x >> i) & 1);
+    for(int i = 32; i >= 0; i--) {
+        printf("%d", (x >> i) & 1);
     }
 
     printf("\n");
