@@ -1,15 +1,15 @@
 import javax.swing.*;
 import jp.ac.ryukoku.math.cards.*;
 
-class G601Panel extends GamePanel {
-    Deck deck = new Deck();
+class G601Panel extends GamePanel{
     JButton button = new JButton("シャッフル");
 
     G601Panel() {
+        final Deck deck = new Deck();
         deck.flip();
         add(deck);
         add(button, 352, 380);
-        button.addActionListener(new ShuffleButtonHandler(deck));
+        button.addActionListener(e -> deck.shuffleAsync());
     }
 }
 
