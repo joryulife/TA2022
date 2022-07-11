@@ -22,6 +22,7 @@ int main(void)
   }
 
   while ((ch = fgetc(sfp)) != EOF) {
+    printf("%d\n",ch);
     if (islower(ch)) {
       fputc(toupper(ch), dfp);
     } else if (isupper(ch)) {
