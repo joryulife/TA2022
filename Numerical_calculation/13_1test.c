@@ -9,7 +9,7 @@ double norm(double a[], int m) {
     return sqrt(s);
 }
 
-double dot(double a[], double b[], int m) {
+double dot(double a[],double b[], int m) {
     double s = 0.0;
     for (int i = 0; i < m; i++) {
         s += a[i] * b[i];
@@ -23,11 +23,19 @@ int main() {
     scanf("%d", &m);
     scanf("%d", &n);
     double a[m][n], q[m][n], r[n][n];
-    
-    
+    double aTemp[m];
+    double ad[m];
+
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             scanf("%lf", &a[i][j]);
+        }
+    }
+
+    //QとRの初期化
+    for (int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            q[i][j]=a[i][j];
         }
     }
     
@@ -39,13 +47,11 @@ int main() {
     
     printf("\n");
     
-    for(int i = 0;i<n;i++){
-        double aTemp[m];
-        double ad[m];
-        for(int l=0;l<m;l++){
-            ad[l] = a[l][i];
+    for(int j = 0;j<n;j++){
+        for(int i=0;i<m;i++){
+            ad[i] = a[i][j];
         }
-        for(int l=0;l<=i-1;l++){
+        for(int l=0;l<=j-1;l++){
             double qTemp[m];
             for(int f=0;f<m;f++){
                 qTemp[f] = q[f][l];
@@ -56,13 +62,14 @@ int main() {
             }
         }
         for(int l=0;l<m;l++){
-            q[l][i] = ad[l]/norm(ad,m);
+            q[l][j] = ad[l]/norm(ad,m);
         }
     }
 
+//Qの出力
     for(int i=0;i<m;i++){
         for(int j = 0;j < n;j++){
-            printf("%f ",q[i][j]);
+            printf("%10.7f ",q[i][j]);
         }
         printf("\n");
     }
@@ -73,12 +80,21 @@ int main() {
         for(int f=0;f<m;f++){
                 qTemp[f] = q[f][i];
         }
-        for(int j=0;j<n;j++){
+
+        for(int j=i;j<n;j++){
             double aTemp[m];
             for(int f=0;f<m;f++){
                 aTemp[f] = a[f][j];
             }
-            printf("%f ",dot(qTemp,aTemp,m));
+            r[i][j] = dot(qTemp,aTemp,m);
+        }
+        //printf("%20.17f ",dot(qTemp,aTemp,m));
+        //printf("\n");
+    }
+
+    for(int i = 0;i < n;i++){
+        for(int j = 0;j < n;j++){
+            printf("%10.7f ",r[i][j]);
         }
         printf("\n");
     }
