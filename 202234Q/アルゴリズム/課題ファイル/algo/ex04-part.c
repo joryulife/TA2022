@@ -17,14 +17,13 @@ void part(int a[],int f,int t){
             i++,j--;
         }
     }
-    i = f;
     printf("left part\n");
-    for(;i<=(f+t)/2;i++){
-        printf("%d ",a[i]);
+    for(int k = f;k <= j;k++){
+        printf("%d ",a[k]);
     }
     printf("\nright part\n");
-    for(;i <= t;i++){
-        printf("%d ",a[i]);
+    for(int k = i;k < t;k++){
+        printf("%d ",a[k]);
     }
     printf("\n");
 }
