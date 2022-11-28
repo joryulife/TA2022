@@ -21,7 +21,7 @@ void SSort(int n,int a[]){
 }
 
 int main(){
-    printf("Input the data\n");
+    //printf("Input the data\n");
     int n = 0,temp;
     int a[N];
 
@@ -29,12 +29,12 @@ int main(){
         a[n++] = temp;
     }
 
-    printf("\n");
-    printf("Sorted data\n");
+    //printf("\n");
+    //printf("Sorted data\n");
 
     SSort(n,a);
     for(int i = 0;i<n;i++){
-        printf("%d ",a[i]);
+        printf("%d\n",a[i]);
     }
-    printf("\n");
+    //printf("%d",EOF);
 }
