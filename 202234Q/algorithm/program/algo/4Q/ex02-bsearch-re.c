@@ -3,20 +3,13 @@
 #define rep(i,n) for(int i=0;i<n;i++)
 
 int BSearch(int i,int j,int a[],int x){
-    int m = (i+j)/2;
     printf("the data to be searched\n");
     rep(k,j-i+1){
         printf("%d ",a[i+k]);
     }
     printf("\n");
-    if(a[m] == x){
-        return m;
-    }else if(x < a[m]){
-        return BSearch(i,m-1,a,x);
-    }else if(a[m] < x){
-        return BSearch(m+1,j,a,x);
-    }
-    return -1;
+    int m = (i+j)/2;
+    return i>j ? -1 : a[m] == x ? m : x < a[m] ? BSearch(i,m-1,a,x) : a[m] < x ? BSearch(m+1,j,a,x) : -1;
 }
 
 int main(){
@@ -25,9 +18,8 @@ int main(){
     scanf("%d",&n);
 
     printf("Input the data\n");
-    int a[n],i=0,temp;
-    int N=n;
-    while(N--){
+    int a[n];
+    rep(i,n){
         scanf("%d",&a[i++]);
     }
     int key;
