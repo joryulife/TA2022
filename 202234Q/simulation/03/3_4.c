@@ -3,10 +3,10 @@
 #include <string.h>
 #define rep(i,n) for(int i = 0;i < n;i++)
 
-double A[] = {   1};
-double B[] = {   0};
-double C[] = {   0};
-double D[] = {   2};
+double A[] = { 1, 2,-1, 1,-1, 1, 0, 0, 0, 1, 0,-1, 1, 0,-1};
+double B[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1};
+double C[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1};
+double D[] = { 2, 1,-2, 1,-1,-1, 1,-1, 0, 1, 0,-1, 1, 0,-1};
 
 FILE *OutputFile;
 double a,b,c,d;
@@ -56,17 +56,17 @@ int main(int argc, char **argv) {
     Nx = 8;
 
     // 初期値を変化させながら Runge-Kutta 法を実行
-    rep(k,1){
+    rep(k,12){
         a=A[k],b=B[k],c=C[k],d=D[k];
         char filename[64];
-        sprintf(filename,"3_2_%d.dat",k);
+        sprintf(filename,"3_4_%d.dat",k);
         OutputFile = fopen(filename,"w");
+        if(OutputFile == NULL){
+            printf("cannot open\n");    
+            exit(1);
+        }
         rep(i,Nx+1) {
             rep(j,Nx+1) {
-                if(OutputFile == NULL){
-                    printf("cannot open\n");    
-                    exit(1);
-                }
                 x0 = -r + 2*r*i/ Nx;
                 y0 = -r + 2*r*j/ Nx;
                 runge_kutta(x0, y0, T, dt);
